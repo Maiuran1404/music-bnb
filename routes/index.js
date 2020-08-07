@@ -2,6 +2,7 @@ const express = require('express');
 const { isEmpty } = require('lodash');
 const User = require('../models/user');
 const Topic = require('../models/topic');
+const TopicNote = require('../models/topicnote');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
@@ -58,7 +59,7 @@ router.get('/users', async (req, res) => {
 router.get('/topics', async (req, res) => {
 
     try {
-        const topics = await Topic.find({});
+        const topics = await TopicNote.find({});
 
         return res.json({
             topics
@@ -70,5 +71,22 @@ router.get('/topics', async (req, res) => {
     }
        
 });
+
+router.post('/topics', async (req, res) => {
+
+    // console.log(req.body);
+    const topicNote = new TopicNote({
+        topicTitle: req.body.topicTitle,
+        description: req.body.description
+    });
+    try{
+        const savedNote = await topicNote.save();
+        res.json(savedNote);
+    }catch(err){
+        res.json({message:err})
+    }
+
+});
+
 
 module.exports = router;

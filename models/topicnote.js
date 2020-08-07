@@ -45,9 +45,4 @@ const TopicNoteSchema = mongoose.Schema({
     subtopics: [SubtopicSchema],
 });
 
-
-const Note = mongoose.model('Note', TopicNoteSchema);
-module.exports = Note;
-
-// module.exports = mongoose.model('TopicNote', TopicNoteSchema);
-
+module.exports = mongoose.model('TopicNote', TopicNoteSchema);
