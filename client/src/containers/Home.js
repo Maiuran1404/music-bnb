@@ -1,65 +1,45 @@
-import React, { Component } from 'react';
-import Form from '../components/Form';
-import DisplayTopics from '../components/DisplayTopics';
-import axios from 'axios';
+import React, { Component, useState, Link} from 'react';
+import Display from '../components/Display';
+import Header from '../components/Header';
+import styled from 'styled-components';
 
-class Home extends Component {
+export const Button = styled.a`
+  /* display: inline-block; */
+  border-radius: 3px;
+  padding: 0.5rem 5px;
+  margin: 0.5rem 1rem;
+  width: fit-content;
+  background: pink;
+  color: black;
+  border: 1px solid black;
+  position: relative;
+  /* right: -250px; */
+  float: right;
+`
 
-  constructor(props) {
-    super(props);
-    this.state = { 
-      topics: []
-    };
-    this.removeTopic = this.removeTopic.bind(this);
-    this.fetchTopics = this.fetchTopics.bind(this);
-    this.addTopic = this.addTopic.bind(this);
+class Home extends Component  {
+
+    render(){
+
+
+        return(
+            
+            <div className="home">
+                
+                <div className="header">
+                
+                    <Header />
+                    <button as={Link} href='/add'> Add new </button>
+
+                </div>
+                
+                <div className="body">
+                    <Display />
+                </div>
+                
+            </div>
+        )
+    }
 }
 
-
-  componentDidMount = () => {
-    this.fetchTopics();
-    console.log('this is topics' + this.state.topics)
-  };
-
-
-  fetchTopics = () => {
-    axios.get('/topics')
-      .then((response) => {
-        const { topics } = response.data;
-        this.setState({
-          topics: [...this.state.topics, ...topics]
-        })
-      })
-      .catch(() => alert('Error fetching topics'));
-  };
-
-  addTopic = ({ topicTitle, description }) => {
-    this.setState({
-      topics: [...this.state.topics, { topicTitle: topicTitle, description: description  }]
-      
-    });
-  };
-
-  removeTopic(_id, i){
-    
-    // let topics = this.state.topics.slice();
-    // topics.splice(i, 1);
-    axios.delete(`/topics/${_id}`)
-
-    // this.setState({
-    //     topics: topics
-    // });
-}
-
-
-  render() {
-    return (
-      <div className="App">
-        <Form addTopic={this.addTopic}/>
-        <DisplayTopics topics={this.state.topics} removeTopic={this.removeTopic} />
-      </div>
-    );
-  }
-}
-
-export default Home;
+export default Home
