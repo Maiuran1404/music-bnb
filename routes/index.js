@@ -93,5 +93,70 @@ router.post('/topics', async (req, res) => {
 
 });
 
+//GET SPECIFIC TOPIC
+router.get('/topics/:topicId', async (req, res) => {
+    try{
+        const topic = await TopicNote.findById(req.params.topicId);
+        res.json(topic);        
+    }catch(err){
+        res.json({message: err})
+    }
+
+})
+
+//GET ALL NOTES FROM TOPIC ?? It's showing as a list of each character?
+router.get('/topics/:topicId/notes', async (req, res) => {
+    try {
+        const note = await TopicNote.findById(req.params.topicId);
+        // res.json(note);
+        res.json(note.notes)
+    } catch(err){
+        res.json({ message: err })
+    }
+})
+
+//Delete TOPIC
+router.delete('/topics/:topicId', async (req, res) => {
+    try {
+        const removedNote = await TopicNote.deleteOne({_id: req.params.topicId})
+        res.json(removedNote);
+    }catch(err){
+        res.json({message: err})
+    }    
+});
+
+//Update a TOPIC ?? Now it sets both fields even if only one is present
+router.patch('/topics/:topicId', async (req, res) => {
+    
+    try{
+        const updatedNote = await TopicNote.updateOne(
+            {_id: req.params.topicId}, 
+            { $set: {topicTitle: req.body.topicTitle, description: req.body.description}}
+            );
+        res.json(updatedNote);
+    }catch(err){
+        res.json({message: err})
+    };  
+    
+})
+
+//Push new note to topic ?? This didn't work
+router.patch('/topics/:topicId/note', async (req, res) => {
+    
+    try {
+        const updatedNote = await TopicNote.updateOne(
+            {_id: req.params.topicId},
+            { $push: {
+                    notes : {note: req.body.note},
+                }
+            }
+        );
+
+        res.json('Succesfully created new note');
+    } catch(err){
+        res.json({message:err})
+    }
+});
+
 
 module.exports = router;

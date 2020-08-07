@@ -1,9 +1,34 @@
 import React, { Component } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-
+// import axios from 'axios';
 const { isEmpty } = require('lodash');
 
+
+
 class DisplayTopics extends Component {
+
+    // onDelete = e => {
+    //     e.preventDefault();
+    //     const { topicTitle, description, _id } = this.state;
+    //     axios({
+    //       url: `/topics/${}Z`,
+    //       method: 'DELETE',
+    //       data: {
+    //         topicTitle,
+    //         description
+    //       }
+    //     })
+    //       .then((response) => {
+    //         this.props.addTopic(response.data);
+    //         this.setState({
+    //           topicTitle: '',
+    //           description: ''
+    //         });
+    //       })
+    //       // .catch(() => alert('Failed uploading data'))
+    //   };
+
+
     render() {
         const allTopics = this.props.topics;
         const topics = !isEmpty(allTopics) ? allTopics : [];

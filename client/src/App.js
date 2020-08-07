@@ -6,27 +6,14 @@ import './App.css';
 
 class App extends Component {
   state = {
-    users: [],
     topics: []
   }
 
   componentDidMount = () => {
-    this.fetchUsers();
     this.fetchTopics();
     console.log('this is topics' + this.state.topics)
-    console.log('this is users' + this.state.users)
   };
 
-  fetchUsers = () => {
-    axios.get('/users')
-      .then((response) => {
-        const { users } = response.data;
-        this.setState({ 
-          users: [...this.state.users, ...users] 
-        })
-      })
-      .catch(() => alert('Error fetching new users'));
-  };
 
   fetchTopics = () => {
     axios.get('/topics')
@@ -39,12 +26,6 @@ class App extends Component {
       .catch(() => alert('Error fetching topics'));
   };
 
-  addUser = ({ name, position, company }) => {
-    this.setState({
-      users: [...this.state.users, { name, position, company }]
-    });
-  };
-
   addTopic = ({ topicTitle, description }) => {
     this.setState({
       topics: [...this.state.topics, { topicTitle, description  }]
@@ -54,15 +35,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Form addUser={this.addTopic}/>
-        < DisplayTopics topics={this.state.topics} />
-        {/* < DisplayUsers users={this.state.users} /> */}
-        {/* <h1>{this.state.topics.topicTitle}</h1> */}
-        {/* {
-          this.state.topics.map((topic, i) => (
-            <p key={i}>{topic.topicTitle}</p>
-          ))
-        } */}
+        <Form addTopic={this.addTopic}/>
+        <DisplayTopics topics={this.state.topics} />
       </div>
     );
   }
