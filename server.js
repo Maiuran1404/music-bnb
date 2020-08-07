@@ -8,6 +8,12 @@ const path = require('path');
 // importing files
 const routes = require('./routes');
 
+// const notesRoute = require('./routes/notes');
+// const usersRoute = require('./routes/users');
+
+// app.use('/topics', notesRoute);
+// app.use('/users', usersRoute);
+
 // Define Global Variables
 const app = express();
 const log = console.log;
