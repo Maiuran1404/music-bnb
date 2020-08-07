@@ -4,9 +4,8 @@ import axios from 'axios';
 
 class Form extends Component {
   state = {
-    name: '',
-    position: '',
-    company: ''
+      topicTitle: '',
+      description: '',
   };
 
   handleChange = e => {
@@ -17,25 +16,23 @@ class Form extends Component {
 
   submit = e => {
     e.preventDefault();
-    const { name, position, company } = this.state;
+    const { topicTitle, description } = this.state;
     axios({
-      url: '/add',
+      url: '/topics',
       method: 'POST',
       data: {
-        name,
-        position,
-        company
+        topicTitle,
+        description
       }
     })
       .then((response) => {
-        this.props.addUser(response.data);
+        this.props.addTopic(response.data);
         this.setState({
-          name: '',
-          company: '',
-          position: ''
+          topicTitle: '',
+          description: ''
         });
       })
-      .catch(() => alert('Failed uploading data'))
+      // .catch(() => alert('Failed uploading data'))
   };
   render() {
     return (
@@ -43,26 +40,18 @@ class Form extends Component {
         <h2>Please, Tell us about you</h2>
         <TextField
           id="standard-dense"
-          value={this.state.name}
-          label="Name"
-          name="name"
+          value={this.state.topicTitle}
+          label="Topic Title"
+          name="topicTitle"
           onChange={this.handleChange}
         />
 
         <TextField
-          name="company"
-          value={this.state.company}
+          name="description"
+          value={this.state.description}
           id="standard-dense"
           onChange={this.handleChange}
-          label="Company"
-        />
-
-        <TextField
-          name="position"
-          value={this.state.position}
-          id="standard-dense"
-          onChange={this.handleChange}
-          label="Position"
+          label="description"
         />
 
         <Button variant="contained" color="primary" onClick={this.submit}> Submit </Button>

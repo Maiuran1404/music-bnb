@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Form from './components/Form';
-import DisplayUsers from './components/DisplayUsers';
 import DisplayTopics from './components/DisplayTopics';
 import axios from 'axios';
 import './App.css';
@@ -46,10 +45,16 @@ class App extends Component {
     });
   };
 
+  addTopic = ({ topicTitle, description }) => {
+    this.setState({
+      topics: [...this.state.topics, { topicTitle, description  }]
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <Form addUser={this.addUser}/>
+        <Form addUser={this.addTopic}/>
         < DisplayTopics topics={this.state.topics} />
         {/* < DisplayUsers users={this.state.users} /> */}
         {/* <h1>{this.state.topics.topicTitle}</h1> */}

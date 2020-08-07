@@ -81,7 +81,12 @@ router.post('/topics', async (req, res) => {
     });
     try{
         const savedNote = await topicNote.save();
-        res.json(savedNote);
+        res.json({
+            message: 'Data successfully saved',
+            statusCode: 200,
+            topicTitle,
+            description
+        });
     }catch(err){
         res.json({message:err})
     }
