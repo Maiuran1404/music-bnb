@@ -1,6 +1,7 @@
 const express = require('express');
 const { isEmpty } = require('lodash');
 const User = require('../models/user');
+const Topic = require('../models/topic');
 const router = express.Router();
 
 router.post('/add', async (req, res) => {
@@ -44,6 +45,23 @@ router.get('/users', async (req, res) => {
 
         return res.json({
             users
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Internal Server error'
+        });
+    }
+       
+});
+
+
+router.get('/topics', async (req, res) => {
+
+    try {
+        const topics = await Topic.find({});
+
+        return res.json({
+            topics
         });
     } catch (error) {
         return res.status(500).json({

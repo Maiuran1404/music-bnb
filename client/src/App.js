@@ -14,6 +14,7 @@ class App extends Component {
     this.fetchUsers();
     this.fetchTopics();
     console.log('this is topics' + this.state.topics)
+    console.log('this is users' + this.state.users)
   };
 
   fetchUsers = () => {
@@ -49,7 +50,12 @@ class App extends Component {
       <div className="App">
         <Form addUser={this.addUser}/>
         < DisplayUsers users={this.state.users} />
-        <h1>{this.state.topics.topicTitle}</h1>
+        {/* <h1>{this.state.topics.topicTitle}</h1> */}
+        {
+          this.state.topics.map(topic => (
+            <p>{topic.topicTitle}</p>
+          ))
+        }
       </div>
     );
   }
