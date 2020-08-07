@@ -1,33 +1,15 @@
 import React, { Component } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-// import axios from 'axios';
+import axios from 'axios';
 const { isEmpty } = require('lodash');
 
 
 
 class DisplayTopics extends Component {
 
-    // onDelete = e => {
-    //     e.preventDefault();
-    //     const { topicTitle, description, _id } = this.state;
-    //     axios({
-    //       url: `/topics/${}Z`,
-    //       method: 'DELETE',
-    //       data: {
-    //         topicTitle,
-    //         description
-    //       }
-    //     })
-    //       .then((response) => {
-    //         this.props.addTopic(response.data);
-    //         this.setState({
-    //           topicTitle: '',
-    //           description: ''
-    //         });
-    //       })
-    //       // .catch(() => alert('Failed uploading data'))
-    //   };
-
+    removeTopic(_id, i) {
+        this.props.removeTopic(_id, i);
+    }
 
     render() {
         const allTopics = this.props.topics;
@@ -43,10 +25,11 @@ class DisplayTopics extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {topics.map(({ topicTitle, description }, key) => (
+                        {topics.map(({ topicTitle, description, _id }, key) => (
                             <TableRow key={key}>
                                 <TableCell component="th" scope="row"> {topicTitle ? topicTitle : 'No Topic Title Found'} </TableCell>
                                 <TableCell align="right">{description ? description : 'No description Found'}</TableCell>
+                                <button onClick={() => { this.removeTopic(_id, key)}} key={key}> Remove me </button>
                             </TableRow>
                         ))}
                     </TableBody>

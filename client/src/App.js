@@ -5,9 +5,15 @@ import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-  state = {
-    topics: []
-  }
+
+  constructor(props) {
+    super(props);
+    this.state = { 
+      topics: []
+    };
+    this.removeTopic = this.removeTopic.bind(this);
+}
+
 
   componentDidMount = () => {
     this.fetchTopics();
@@ -32,11 +38,22 @@ class App extends Component {
     });
   };
 
+  removeTopic(_id, i){
+    
+    // let topics = this.state.topics.slice();
+    // topics.splice(i, 1);
+    axios.delete(`/topics/${_id}`)
+
+    // this.setState({
+    //     topics: topics
+    // });
+}
+
   render() {
     return (
       <div className="App">
         <Form addTopic={this.addTopic}/>
-        <DisplayTopics topics={this.state.topics} />
+        <DisplayTopics topics={this.state.topics} removeTopic={this.removeTopic} />
       </div>
     );
   }
