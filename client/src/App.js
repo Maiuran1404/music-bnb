@@ -1,62 +1,29 @@
-import React, { Component } from 'react';
-import Form from './components/Form';
-import DisplayTopics from './components/DisplayTopics';
-import axios from 'axios';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-class App extends Component {
+//containers
+import Home from './containers/Home';
+import Topicpage from './containers/Topicpage';
 
-  constructor(props) {
-    super(props);
-    this.state = { 
-      topics: []
-    };
-    this.removeTopic = this.removeTopic.bind(this);
-}
+const App = () => {
 
-
-  componentDidMount = () => {
-    this.fetchTopics();
-    console.log('this is topics' + this.state.topics)
-  };
-
-
-  fetchTopics = () => {
-    axios.get('/topics')
-      .then((response) => {
-        const { topics } = response.data;
-        this.setState({
-          topics: [...this.state.topics, ...topics]
-        })
-      })
-      .catch(() => alert('Error fetching topics'));
-  };
-
-  addTopic = ({ topicTitle, description }) => {
-    this.setState({
-      topics: [...this.state.topics, { topicTitle, description  }]
-    });
-  };
-
-  removeTopic(_id, i){
-    
-    // let topics = this.state.topics.slice();
-    // topics.splice(i, 1);
-    axios.delete(`/topics/${_id}`)
-
-    // this.setState({
-    //     topics: topics
-    // });
-}
-
-  render() {
     return (
-      <div className="App">
-        <Form addTopic={this.addTopic}/>
-        <DisplayTopics topics={this.state.topics} removeTopic={this.removeTopic} />
-      </div>
+      
+
+        
+          <Router>
+              <Switch>
+                
+                <Route exact path="/" component={Home} />
+                <Route exact path="/topics/:topic" component={Topicpage} />
+                <Route render={
+                  () => <h3>Oops, we couldn't find this page. Try reverting to homes</h3>
+                }/>
+              </Switch>
+          </Router>
+
     );
   }
-}
+
 
 export default App;

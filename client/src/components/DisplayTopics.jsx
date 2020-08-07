@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import axios from 'axios';
 const { isEmpty } = require('lodash');
 
 
@@ -15,6 +14,7 @@ class DisplayTopics extends Component {
         const allTopics = this.props.topics;
         const topics = !isEmpty(allTopics) ? allTopics : [];
 
+
         return (
             <div className="topics">
                 {!isEmpty(topics) ? <Table>
@@ -26,11 +26,13 @@ class DisplayTopics extends Component {
                     </TableHead>
                     <TableBody>
                         {topics.map(({ topicTitle, description, _id }, key) => (
-                            <TableRow key={key}>
-                                <TableCell component="th" scope="row"> {topicTitle ? topicTitle : 'No Topic Title Found'} </TableCell>
-                                <TableCell align="right">{description ? description : 'No description Found'}</TableCell>
-                                <button onClick={() => { this.removeTopic(_id, key)}} key={key}> Remove me </button>
-                            </TableRow>
+                            
+                                <TableRow key={key}>
+                                    <TableCell component="th" scope="row"> {topicTitle ? topicTitle : 'No Topic Title Found'} </TableCell>
+                                    <TableCell align="right">{description ? description : 'No description Found'}</TableCell>
+                                    <button onClick={(e) => {e.preventDefault(); window.location.href=`/topics/${_id}`;}}>Open me</button>
+                                    <button onClick={() => { this.removeTopic(_id, key)}} key={key}> Remove me </button>
+                                </TableRow>
                         ))}
                     </TableBody>
                 </Table> : null}

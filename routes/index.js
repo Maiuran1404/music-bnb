@@ -140,7 +140,7 @@ router.patch('/topics/:topicId', async (req, res) => {
     
 })
 
-//Push new note to topic ?? This didn't work
+//Push new note to topic 
 router.patch('/topics/:topicId/note', async (req, res) => {
     
     try {
