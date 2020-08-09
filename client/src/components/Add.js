@@ -10,7 +10,7 @@ export const Button = styled.button`
   padding: 0.5rem 5px;
   margin: 0.5rem 1rem;
   width: fit-content;
-  background: #111d4a;
+  background: #2d3142;
   color: black;
   border: 1px solid black;
   position: relative;
@@ -25,7 +25,7 @@ const Form = styled.form`
 
 const FormTitle = styled.h2`
   padding: 20px;
-  padding-left: 40%;
+  padding-left: 35%;
   margin: 0 auto;
 `
 
@@ -71,9 +71,9 @@ const Submit = styled.button`
   padding: 0.5rem 5px;
   margin: 0.5rem 1rem;
   width: fit-content;
-  background: #111d4a;
+  background: #2d3142;
   color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
 
 `
@@ -213,7 +213,7 @@ export class Add extends Component {
               
               <Form onSubmit={this.handleSubmit}>
               <FormTitle> Add a new listing </FormTitle>
-                
+              <br/>
                   <Input 
                     type="text"
                     name="instrument"

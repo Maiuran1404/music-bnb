@@ -11,9 +11,9 @@ export const Button = styled.a`
   padding: 1rem 5px;
   margin: 1rem 1rem;
   width: fit-content;
-  background: #111d4a;
+  background: #2d3142;
   color: white;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   /* right: -250px; */
   float: left;
@@ -29,8 +29,8 @@ const Container = styled.div`
     width: 50%;
     margin: 0 auto;
     box-sizing: border-box;
-    height: 90%;
-    border: 40px solid #111d4a;
+    height: 100%;
+    border: 30px solid #111d4a;
     padding: 10px;
     border-radius: 50px;
     height: 75%;
