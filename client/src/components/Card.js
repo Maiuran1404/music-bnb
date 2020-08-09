@@ -18,6 +18,12 @@ export const Button = styled.a`
   float: right;
 `
 
+const Clickable = styled.div`
+  &:hover{
+    cursor: pointer;
+  }
+`
+
 // Our custom easing
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -54,19 +60,22 @@ const stagger = {
 class Card extends Component {
 
 
+  
 
 
     render(){
 
         return (
-            <div className="cardList">
+            <Clickable className="cardList">
+              {
+              this.props.instrument && this.props.address &&
+          
             <motion.div
-            //   style={{ rotate: 0, x: "calc(50vh - 100px)" }}  
-            //   whileHover={{ scale: 1.15 }}
-            //   whileTap={{ scale: 0.85 }}
-            //   backgroundColor="#fff000"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              backgroundColor="#fff000"
               className='card'
-            //   onClick={() => this.handleClick(this.props.pageName)}
+              onClick={(e) => {e.preventDefault(); window.location.href=`/${this.props.id}`;}}
               >
                         <div className="Card-header">
                             {/* <img src={memoji} alt="Logo" /> */}
@@ -86,14 +95,15 @@ class Card extends Component {
                                 <li>{this.props.number}</li>
                                 
                             </div>
-                            <button as={Link} href={this.props.id}> Book </button>
+                            {/* <button as={Link} href={this.props.id}> Book </button> */}
                             {console.log('ID' + this.props.id)}
                         </div>
                         <div className="Card-footer">
                             
                         </div>
             </motion.div>
-            </div>
+            }
+            </Clickable>
           
         );
     }

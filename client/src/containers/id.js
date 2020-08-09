@@ -18,6 +18,13 @@ const Button = styled.a`
   float: right;
 `
 
+const Building = styled.h1`
+  /* margin-left: 28%; */
+  text-align: center;
+  margin-top: 22%;
+  font-weight: 300;
+`
+
 let easing = [0.6, -0.05, 0.01, 0.99];
 
 const stagger = {
@@ -78,11 +85,10 @@ class InstrumentId extends Component  {
   render(){
 
     const j = Object.values(this.state.instruments)
-    // const e = this.state.instruments.extensions
 
       return(
         <Fragment>
-          {/* <div>Maiu</div> */}
+          <Building> We are currently building the booking functionality. <br/>  Looking forward to launching this soon! 🦄</Building>
           <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }}>{
             j && j.map((instrument,i) =>{
              return <motion.div key={i} variants={fadeInUp}>
@@ -158,16 +164,5 @@ class InstrumentId extends Component  {
 }
 }
 
-
-
-
-// InstrumentId.getInitialProps = async function(context) {
-//   const { id } = context.query;
-//   const res = await fetch(
-//     `https://my-json-server.typicode.com/wrongakram/demo/products/${id}`
-//   );
-//   const InstrumentId = await res.json();
-//   return { InstrumentId };
-// };
 
 export default InstrumentId;

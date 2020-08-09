@@ -23,8 +23,8 @@ const Banner = styled.h3`
 const Container = styled.div`
   margin-top: 5%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(4, auto);
 
   /* grid-template-areas: "Disp Disp" "Disp" "Disp"; */
 `
@@ -136,7 +136,6 @@ export class Display extends Component {
                             id={instrument._id}/>
                           </Disp2>
                       </Disp>
-
                   ))}
               {/* {this.displayInstruments(this.state.instruments)} */}
             </Container>
