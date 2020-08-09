@@ -23,7 +23,7 @@ export class AddPage extends Component {
     render() {
         return(
             <div>
-                <button as={Link} href='/'> Home </button>
+                <Button as={Link} href='/'> Home </Button>
                 <Add />
             </div>
         )

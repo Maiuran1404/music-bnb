@@ -1,4 +1,4 @@
-import React, { Component, useState, Link} from 'react';
+import React, { Component, Link} from 'react';
 import Display from '../components/Display';
 import Header from '../components/Header';
 import styled from 'styled-components';
@@ -29,7 +29,7 @@ class Home extends Component  {
                 <div className="header">
                 
                     <Header />
-                    <button as={Link} href='/add'> Add new </button>
+                    <Button as={Link} href='/add'> Add new </Button>
 
                 </div>
                 
