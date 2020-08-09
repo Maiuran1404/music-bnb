@@ -9,7 +9,7 @@ const Button = styled.a`
   border-radius: 3px;
   padding: 0.5rem 5px;
   margin: 0.5rem 1rem;
-  width: fit-content;
+  
   background: pink;
   color: black;
   border: 1px solid black;
@@ -95,7 +95,7 @@ class InstrumentId extends Component  {
                   {instrument.extensions && instrument.extensions.map((extension, i) => {
                     return <motion.div variants={fadeInUp}>{extension}</motion.div>
                   })}
-                <Button>Book</Button>
+                <Button> Book this instrument </Button>
                 </motion.div>
              })
             }

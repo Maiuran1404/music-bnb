@@ -12,13 +12,13 @@ class App extends Component {
     console.log(this.state)
     return(
       <Router>
-        <div>
+        
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/add' component={AddPage} />
           <Route path='/:id' component={InstrumentId}/>
         </Switch>
-        </div>
+        
       </Router>
     );
   }

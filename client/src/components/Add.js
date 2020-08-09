@@ -16,6 +16,20 @@ export const Button = styled.button`
   float: left;
 `
 
+const Form = styled.form`
+  padding: 20px;
+`
+
+const FormTitle = styled.h2`
+  padding: 20px;
+  padding-left: 40%;
+  margin: 0 auto;
+`
+
+const Container = styled.div`
+  margin: 0 auto;
+`
+
 export class Add extends Component {
 
     state = {
@@ -145,10 +159,10 @@ export class Add extends Component {
 
     render() {
         return(
-            <div>
-              <h2>MusicBnb</h2>
+            <Container>
               
-              <form onSubmit={this.handleSubmit}>
+              <Form onSubmit={this.handleSubmit}>
+              <FormTitle> Add a new listing </FormTitle>
                 <div className="form-input">
                   <input 
                     type="text"
@@ -222,9 +236,9 @@ export class Add extends Component {
                     <button>Submit</button>
                 </div>
 
-              </form>
+              </Form>
 
-            </div>
+            </Container>
           );
     }
 }
