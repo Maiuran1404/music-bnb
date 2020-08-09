@@ -5,17 +5,18 @@ import styled from 'styled-components';
 
 export const Button = styled.a`
   /* display: inline-block; */
-  border-radius: 3px;
+  border-radius: 30px;
   padding: 0.5rem 5px;
   margin: 0.5rem 1rem;
-  width: fit-content;
-  background: pink;
+  width: 8%;
+  background: white;
   color: black;
-  border: 1px solid black;
+  /* border: 1px; */
   position: relative;
   /* right: -250px; */
   float: right;
 `
+
 
 class Home extends Component  {
 
@@ -28,14 +29,13 @@ class Home extends Component  {
                 
                 <div className="header">
                 
-                    <Header />
+                    {/* <Header /> */}
                     <Button as={Link} href='/add'> Add new </Button>
+                    <Display />
 
                 </div>
-                
-                <div className="body">
-                    <Display />
-                </div>
+
+
                 
             </div>
         )

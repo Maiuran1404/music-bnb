@@ -30,6 +30,7 @@ $font-2: "Open Sans";
   html {
     box-sizing: border-box;
     font-size: $font-size;
+    background-color: #F7F7F7;
   }
   
   body {
@@ -84,11 +85,11 @@ $font-2: "Open Sans";
   }
   
   .cardList {
-    margin-top: 80px;
+    margin: 0 auto;
   }
 
 .header {
-    background: $primary-cyan;
+    background: #202C59;
     background-size: cover;
     height: 150px;
     width: 100%;

@@ -25,21 +25,25 @@ const Wrapper = styled.div`
 const Container = styled.div`
     background-color: white;
     width: 50%;
-    height: 60%;
-    border-radius: 20px;
     margin: 0 auto;
+    height: 80%;
+    border: 40px solid grey;
+    padding: 10px;
+    border-radius: 50px;
 `
-
 
 export class AddPage extends Component {
 
     render() {
         return(
             <Wrapper>
-                <Container>
-                    <Button as={Link} href='/'> Home </Button>
-                    <Add />
-                </Container>
+                
+                    <Container>
+                        <Button as={Link} href='/'> Home </Button>
+                        <Add />
+                    </Container>
+            
+
             </Wrapper>
         )
 }}

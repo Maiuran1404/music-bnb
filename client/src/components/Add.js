@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import memoji from './memoji.png';
+import cogoToast from 'cogo-toast';
 
 export const Button = styled.button`
   /* display: inline-block; */
@@ -28,6 +30,19 @@ const FormTitle = styled.h2`
 
 const Container = styled.div`
   margin: 0 auto;
+`
+
+const Input = styled.input`
+  /* width: 100%; */
+  padding: 8px 10px;
+  margin: 8px 10px;
+
+  box-sizing: border-box;
+  &:focus{
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+  }
 `
 
 export class Add extends Component {
@@ -114,6 +129,8 @@ export class Add extends Component {
         .catch((err) => {
           console.log(err)
         })
+
+        cogoToast.success("Success!");
       }
     
       reset = () => {
@@ -163,50 +180,56 @@ export class Add extends Component {
               
               <Form onSubmit={this.handleSubmit}>
               <FormTitle> Add a new listing </FormTitle>
-                <div className="form-input">
-                  <input 
+                
+                  <Input 
                     type="text"
                     name="instrument"
-                    placeholder="instrument"
+                    placeholder="Instrument"
                     value={this.state.instrument}
                     onChange={this.handleChange}/>
-                </div>
                 
-                <div className="form-input">
-                  <input 
-                    type="text"
-                    name="owner"
-                    placeholder="owner"
-                    value={this.state.owner}
-                    onChange={this.handleChange}/>
-                </div>
-                <div className="form-input">
-                  <input 
+                  <Input 
+                      type="text"
+                      name="owner"
+                      placeholder="owner"
+                      value={this.state.owner}
+                      onChange={this.handleChange}/>
+
+
+                  <br/>
+                
+
+
+                  <Input 
                     type="text"
                     name="address"
                     placeholder="address"
                     value={this.state.address}
                     onChange={this.handleChange}/>
-                </div>
-                <div className="form-input">
-                  <input 
-                    type="number"
-                    name="price"
-                    placeholder="price"
-                    value={this.state.price}
-                    onChange={this.handleChange}/>
-                </div>
-                <div className="form-input">
-                  <input 
+
+
+
+                  <Input 
                     type="text"
                     name="email"
                     placeholder="email "
                     value={this.state.email}
                     onChange={this.handleChange}/>
+
+                  <br/>
+                  <br/>
+
+                  <Input 
+                    type="number"
+                    name="price"
+                    placeholder="price"
+                    value={this.state.price}
+                    onChange={this.handleChange}/>
+
                     <br/>
                     <label>
                       Gummibears
-                      <input
+                      <Input
                         name="gummibears"
                         type="checkbox"
                         checked={this.state.gummibears}
@@ -216,7 +239,7 @@ export class Add extends Component {
                     
                     <label>
                       Soloroom
-                      <input
+                      <Input
                         name="soloroom"
                         type="checkbox"
                         checked={this.state.soloroom}
@@ -234,7 +257,7 @@ export class Add extends Component {
                     {this.state.gummibears && this.state.soloroom && <h3>Your total price: ${parseInt(this.state.price) + 15} USD</h3>}
                   </div>
                     <button>Submit</button>
-                </div>
+                
 
               </Form>
 
