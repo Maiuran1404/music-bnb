@@ -10,7 +10,7 @@ export const Button = styled.button`
   padding: 0.5rem 5px;
   margin: 0.5rem 1rem;
   width: fit-content;
-  background: pink;
+  background: #111d4a;
   color: black;
   border: 1px solid black;
   position: relative;
@@ -20,6 +20,7 @@ export const Button = styled.button`
 
 const Form = styled.form`
   padding: 20px;
+  float:  center;
 `
 
 const FormTitle = styled.h2`
@@ -30,19 +31,51 @@ const FormTitle = styled.h2`
 
 const Container = styled.div`
   margin: 0 auto;
+  
 `
 
 const Input = styled.input`
   /* width: 100%; */
   padding: 8px 10px;
-  margin: 8px 10px;
-
+  
+  margin: 8px 0px;
+  margin-left: 5%;
   box-sizing: border-box;
   &:focus{
     background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
+
   }
+`
+
+const InputText = styled.input`
+  text-align: center;
+`
+
+const Extension = styled.div`
+  text-align: center;
+`
+
+const Ex = styled.p`
+  font-size: 16px;
+  font-weight: 200;
+`
+
+const Base = styled.h3`
+  font-weight: 300;
+`
+
+const Submit = styled.button`
+  font-weight: 200;
+  font-size: 18px;
+  border-radius: 15px;
+  padding: 0.5rem 5px;
+  margin: 0.5rem 1rem;
+  width: fit-content;
+  background: #111d4a;
+  color: white;
+  border: 1px solid black;
+  position: relative;
+
 `
 
 export class Add extends Component {
@@ -196,7 +229,7 @@ export class Add extends Component {
                       onChange={this.handleChange}/>
 
 
-                  <br/>
+                  {/* <br/> */}
                 
 
 
@@ -217,46 +250,57 @@ export class Add extends Component {
                     onChange={this.handleChange}/>
 
                   <br/>
-                  <br/>
+                  {/* <br/> */}
 
                   <Input 
                     type="number"
                     name="price"
-                    placeholder="price"
+                    placeholder="price (€/hour)"
                     value={this.state.price}
                     onChange={this.handleChange}/>
 
                     <br/>
-                    <label>
-                      Gummibears
-                      <Input
+                    
+                    <Extension>
+                      <Ex>Gummibears (5€)   
+                      &nbsp;&nbsp;
+                      &nbsp;&nbsp;
+
+                      <InputText
                         name="gummibears"
                         type="checkbox"
                         checked={this.state.gummibears}
                         onChange={this.handleInputChange} />
-                    </label>
-                    <p>With Gummibears extension: $5 USD</p>
+                      </Ex>
+
+
                     
-                    <label>
-                      Soloroom
-                      <Input
+                      <Ex>Alone room (10€)                     
+                      &nbsp;&nbsp;
+                      &nbsp;&nbsp;
+                        <InputText
                         name="soloroom"
                         type="checkbox"
                         checked={this.state.soloroom}
-                        onChange={this.handleInputChangeSolo} />
-                    </label>
-                    <p>With soloroom extension: 10 USD</p>
+                        onChange={this.handleInputChangeSolo} /></Ex>
+
+                    </Extension>
+                    
 
                     <div>
                     <br/>
-                    {<h3>Your hourly price: ${this.state.price}  USD</h3>}
+                    <Extension>
+                    {<Base> Base price: &nbsp;&nbsp; {this.state.price} €/hour</Base>}
                     
-                    {!this.state.gummibears && !this.state.soloroom && <h3>Your total price: ${this.state.price} USD</h3>}
-                    {this.state.gummibears && !this.state.soloroom && <h3>Your total price: ${parseInt(this.state.price) + parseInt(5)} USD</h3>}
-                    {!this.state.gummibears && this.state.soloroom && <h3>Your total price: ${parseInt(this.state.price) + parseInt(10)} USD</h3>}
-                    {this.state.gummibears && this.state.soloroom && <h3>Your total price: ${parseInt(this.state.price) + 15} USD</h3>}
+                    {!this.state.gummibears && !this.state.soloroom && <Base> Total price: &nbsp;&nbsp; {this.state.price}  €/hour</Base>}
+                    {this.state.gummibears && !this.state.soloroom && <Base> Total price: &nbsp;&nbsp; {parseInt(this.state.price) + parseInt(5)}  €/hour</Base>}
+                    {!this.state.gummibears && this.state.soloroom && <Base> Total price: &nbsp;&nbsp; {parseInt(this.state.price) + parseInt(10)} €/hour</Base>}
+                    {this.state.gummibears && this.state.soloroom && <Base> Total price: &nbsp;&nbsp; {parseInt(this.state.price) + 15}  €/hour</Base>}
+                    </Extension>
                   </div>
-                    <button>Submit</button>
+                  
+                  
+                    <Extension><Submit>Submit</Submit></Extension>
                 
 
               </Form>

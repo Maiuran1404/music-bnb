@@ -133,6 +133,8 @@ export class Display extends Component {
                             owner={instrument.owner}
                             address={instrument.address}
                             number={instrument.number}
+                            email={instrument.email}
+                            price={instrument.price}
                             id={instrument._id}/>
                           </Disp2>
                       </Disp>

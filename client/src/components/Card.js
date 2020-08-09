@@ -24,6 +24,14 @@ const Clickable = styled.div`
   }
 `
 
+const OfferTitle = styled.h2`
+  text-align: center;
+`
+
+const Price = styled.h4`
+  color: #111d4a;
+`
+
 // Our custom easing
 let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -77,9 +85,7 @@ class Card extends Component {
               className='card'
               onClick={(e) => {e.preventDefault(); window.location.href=`/${this.props.id}`;}}
               >
-                        <div className="Card-header">
-                            {/* <img src={memoji} alt="Logo" /> */}
-                        </div>
+
                             <div className="Card-body">
                         <div className="heading">
                         <span className="company">{this.props.instrument} </span>
@@ -88,12 +94,12 @@ class Card extends Component {
                             {featured ? <span className="label">featured </span> : null} */}
                         </div>
                         </div>
-                        <h1>{this.props.address}</h1>
-
+                        <OfferTitle>{this.props.address}</OfferTitle>
+                        <Price>€{this.props.price} EUR/ hour</Price>
                             <div className="footer">
                                 <li>{this.props.owner}</li>
-                                <li>{this.props.number}</li>
-                                
+                                {/* <li>{this.props.number}</li> */}
+                                {/* <li>{this.props.email}</li> */}
                             </div>
                             {/* <button as={Link} href={this.props.id}> Book </button> */}
                             {console.log('ID' + this.props.id)}
